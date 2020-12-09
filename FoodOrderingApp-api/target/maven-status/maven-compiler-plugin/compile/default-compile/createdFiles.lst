@@ -35,6 +35,7 @@ com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.class
 com/upgrad/FoodOrderingApp/api/model/AddressListResponse.class
 com/upgrad/FoodOrderingApp/api/model/ItemQuantityResponseItem.class
 com/upgrad/FoodOrderingApp/api/model/CategoryListResponse.class
+com/upgrad/FoodOrderingApp/api/controller/CustomerController.class
 com/upgrad/FoodOrderingApp/api/model/LogoutResponse.class
 com/upgrad/FoodOrderingApp/api/model/RestaurantUpdatedResponse.class
 com/upgrad/FoodOrderingApp/api/model/SignupCustomerResponse.class
