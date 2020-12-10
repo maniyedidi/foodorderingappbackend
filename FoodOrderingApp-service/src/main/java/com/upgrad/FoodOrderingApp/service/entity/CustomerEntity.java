@@ -138,12 +138,5 @@ public class CustomerEntity implements Serializable {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
-    public boolean isValidCustomer() throws IllegalAccessException {
-        for (Field f : getClass().getDeclaredFields())
-            if (f.get(this) != null)
-                return false;
-        return true;
-    }
-
 
 }

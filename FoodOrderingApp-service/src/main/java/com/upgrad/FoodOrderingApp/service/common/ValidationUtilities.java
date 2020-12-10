@@ -1,5 +1,7 @@
 package com.upgrad.FoodOrderingApp.service.common;
 
+import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,9 +20,9 @@ public class ValidationUtilities {
     }
 
     public static boolean isValidContact(String contactNumber) {
-        String emailRegex = "^[0][1-9]\\\\d{9}$|^[1-9]\\\\d{9}";
+        String contactRegex = "^[0-9]{10}$";
 
-        Pattern pat = Pattern.compile(emailRegex);
+        Pattern pat = Pattern.compile(contactRegex);
         if (contactNumber == null)
             return false;
         return pat.matcher(contactNumber).matches();
@@ -52,5 +54,12 @@ public class ValidationUtilities {
         // Return if the password
         // matched the ReGex
         return m.matches();
+    }
+
+    public static boolean isValidCustomer(CustomerEntity customerEntity) {
+        if (customerEntity.getFirstName() != null && customerEntity.getContactNumber() != null && customerEntity.getEmailAddress() != null && customerEntity.getPassword() != null) {
+            return true;
+        }
+        return false;
     }
 }
