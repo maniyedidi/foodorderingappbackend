@@ -1,3 +1,4 @@
+/Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/common/ValidationUtilities.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/CustomerNotFoundException.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/SaveAddressException.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/AuthenticationFailedException.java
@@ -7,6 +8,7 @@
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/InvalidRatingException.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/AuthorizationFailedException.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/RestaurantNotFoundException.java
+/Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/common/GenericErrorCode.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/common/UnexpectedException.java
 /Users/yedidisatyamanikanta/be-workspace/foodorderingappbackend/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/exception/PaymentMethodNotFoundException.java
