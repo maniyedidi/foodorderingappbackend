@@ -1,7 +1,7 @@
 package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.api.model.*;
-import com.upgrad.FoodOrderingApp.service.businness.CustomerBusinessService;
+import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
@@ -26,7 +26,7 @@ import java.util.UUID;
 public class CustomerController {
 
     @Autowired
-    CustomerBusinessService customerService;
+    CustomerService customerService;
 
     @RequestMapping(path = "/customer/signup", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignupCustomerResponse> signup(final SignupCustomerRequest signupCustomerRequest) throws SignUpRestrictedException {
@@ -37,7 +37,7 @@ public class CustomerController {
         customerEntity.setContactNumber(signupCustomerRequest.getContactNumber());
         customerEntity.setEmailAddress(signupCustomerRequest.getEmailAddress());
         customerEntity.setPassword(signupCustomerRequest.getPassword());
-        final CustomerEntity createdUserEntity = customerService.signup(customerEntity);
+        final CustomerEntity createdUserEntity = customerService.saveCustomer(customerEntity);
         SignupCustomerResponse userResponse = new SignupCustomerResponse().id(UUID.randomUUID().toString()).status("CUSTOMER SUCCESSFULLY REGISTERED");
         return new ResponseEntity<SignupCustomerResponse>(userResponse, HttpStatus.CREATED);
     }

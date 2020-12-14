@@ -2,7 +2,7 @@ package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.api.model.*;
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
-import com.upgrad.FoodOrderingApp.service.businness.CustomerBusinessService;
+import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
@@ -23,7 +23,7 @@ import java.util.UUID;
 public class AddressController {
 
     @Autowired
-    private CustomerBusinessService customerService;
+    private CustomerService customerService;
 
     @Autowired
     private AddressService addressService;

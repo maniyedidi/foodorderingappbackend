@@ -18,7 +18,7 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Service
-public class CustomerBusinessService {
+public class CustomerService {
 
     @Autowired
     private CustomerDao customerDao;
@@ -26,7 +26,7 @@ public class CustomerBusinessService {
     private PasswordCryptographyProvider passwordCryptographyProvider;
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = SignUpRestrictedException.class)
-    public CustomerEntity signup(CustomerEntity customerEntity) throws SignUpRestrictedException {
+    public CustomerEntity saveCustomer(CustomerEntity customerEntity) throws SignUpRestrictedException {
         if (!ValidationUtilities.isValidCustomer(customerEntity)) {
             throw new SignUpRestrictedException("SGR-005", "Except last name all fields should be filled");
         }

@@ -1,5 +1,6 @@
 com/upgrad/FoodOrderingApp/service/entity/StateEntity.class
 com/upgrad/FoodOrderingApp/service/exception/CouponNotFoundException.class
+com/upgrad/FoodOrderingApp/service/businness/CustomerService.class
 com/upgrad/FoodOrderingApp/service/exception/SaveAddressException.class
 com/upgrad/FoodOrderingApp/service/businness/PasswordCryptographyProvider.class
 com/upgrad/FoodOrderingApp/service/common/ErrorCode.class
@@ -19,7 +20,6 @@ com/upgrad/FoodOrderingApp/service/entity/CustomerAddressEntity.class
 com/upgrad/FoodOrderingApp/service/businness/JwtTokenProvider.class
 com/upgrad/FoodOrderingApp/service/exception/ItemNotFoundException.class
 com/upgrad/FoodOrderingApp/service/exception/RestaurantNotFoundException.class
-com/upgrad/FoodOrderingApp/service/businness/CustomerBusinessService.class
 com/upgrad/FoodOrderingApp/service/exception/PaymentMethodNotFoundException.class
 com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.class
 com/upgrad/FoodOrderingApp/service/exception/InvalidRatingException.class
