@@ -18,7 +18,7 @@ public class CustomerDao {
     @Autowired
     private PasswordCryptographyProvider passwordCryptographyProvider;
 
-    public CustomerEntity createUser(CustomerEntity customerEntity) {
+    public CustomerEntity createCustomer(CustomerEntity customerEntity) {
         String[] encryptedText = passwordCryptographyProvider.encrypt(customerEntity.getPassword());
         customerEntity.setSalt(encryptedText[0]);
         customerEntity.setPassword(encryptedText[1]);

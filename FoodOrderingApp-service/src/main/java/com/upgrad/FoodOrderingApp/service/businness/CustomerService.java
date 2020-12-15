@@ -25,26 +25,40 @@ public class CustomerService {
     @Autowired
     private PasswordCryptographyProvider passwordCryptographyProvider;
 
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = SignUpRestrictedException.class)
+    /* Method for customer signup functionality and to validate if the required mandatory fields are provided else will throw the respectice exception*/
+    @Transactional(propagation = Propagation.REQUIRED)
     public CustomerEntity saveCustomer(CustomerEntity customerEntity) throws SignUpRestrictedException {
-        if (!ValidationUtilities.isValidCustomer(customerEntity)) {
+
+        if(!ValidationUtilities.isValidCustomer(customerEntity)){
             throw new SignUpRestrictedException("SGR-005", "Except last name all fields should be filled");
         }
-        if (customerDao.getCustomerByContact(customerEntity.getContactNumber()) != null) {
+
+        // validation for unique contact number
+        if (customerDao.getCustomerByContactNumber(customerEntity.getContactNumber()) != null) {
             throw new SignUpRestrictedException("SGR-001", "This contact number is already registered! Try other contact number.");
         }
+
+        // validation for email id format
         if (!ValidationUtilities.isValidEmail(customerEntity.getEmailAddress())) {
             throw new SignUpRestrictedException("SGR-002", "Invalid email-id format!");
         }
+
+        // validation for contact number format
         if (!ValidationUtilities.isValidContact(customerEntity.getContactNumber())) {
             throw new SignUpRestrictedException("SGR-003", "Invalid contact number!");
         }
+
+        // validation for password strength
         if (!ValidationUtilities.isValidPassword(customerEntity.getPassword())) {
             throw new SignUpRestrictedException("SGR-004", "Weak password!");
         }
 
-        return customerDao.createUser(customerEntity);
+        // encrypt salt and password
+        String[] encryptedText = passwordCryptographyProvider.encrypt(customerEntity.getPassword());
+        customerEntity.setSalt(encryptedText[0]);
+        customerEntity.setPassword(encryptedText[1]);
 
+        return customerDao.createCustomer(customerEntity);
     }
 
     /*Method to login based on username and password else will throw authentication failure exception*/
@@ -130,15 +144,15 @@ public class CustomerService {
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerEntity updateCustomerPassword(String oldPassword, String newPassword, CustomerEntity customerEntity) throws UpdateCustomerException {
 
-        // validation for new password strength
-        if (!newPassword.matches("^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#@$%&*!^-]).{8,}$")) {
-            throw new UpdateCustomerException("UCR-001", "Weak password!");
-        }
-
         // validation for old password
         final String oldEncryptedPassword = PasswordCryptographyProvider.encrypt(oldPassword, customerEntity.getSalt());
         if (!oldEncryptedPassword.equals(customerEntity.getPassword())) {
             throw new UpdateCustomerException("UCR-004", "Incorrect old password!");
+        }
+
+        // validation for new password strength
+        if (!newPassword.matches("^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#@$%&*!^-]).{8,}$")) {
+            throw new UpdateCustomerException("UCR-001", "Weak password!");
         }
 
         // encrypt salt and new password
