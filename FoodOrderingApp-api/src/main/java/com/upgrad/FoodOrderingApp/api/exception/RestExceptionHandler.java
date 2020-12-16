@@ -82,4 +82,28 @@ public class RestExceptionHandler {
         );
     }
 
+    /**
+     * Exception handler for RestaurantNotFoundException
+     *
+     * @param exe     RestaurantNotFoundException type object containing error code and error message
+     * @param request The web request object gives access to all the request parameters
+     * @return ResponseEntity<ErrorResponse> type object displaying error code and error message along with HttpStatus NOT_FOUND
+     */
+    @ExceptionHandler(RestaurantNotFoundException.class)
+    public ResponseEntity<ErrorResponse> RestaurantNotFoundException(RestaurantNotFoundException exc, WebRequest request) {
+        return new ResponseEntity<ErrorResponse>(new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Exception handler for ItemNotFoundException
+     *
+     * @param exe     ItemNotFoundException type object containing error code and error message
+     * @param request The web request object gives access to all the request parameters
+     * @return ResponseEntity<ErrorResponse> type object displaying error code and error message along with HttpStatus NOT_FOUND
+     */
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ResponseEntity<ErrorResponse> ItemNotFoundException(ItemNotFoundException exc, WebRequest request) {
+        return new ResponseEntity<ErrorResponse>(new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.NOT_FOUND);
+    }
+
 }
