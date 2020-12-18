@@ -25,6 +25,8 @@ com/upgrad/FoodOrderingApp/service/common/UnexpectedException.class
 com/upgrad/FoodOrderingApp/service/entity/OrderEntity.class
 com/upgrad/FoodOrderingApp/service/dao/ItemDao.class
 com/upgrad/FoodOrderingApp/service/entity/OrderItemEntity.class
+com/upgrad/FoodOrderingApp/service/businness/PaymentService.class
+com/upgrad/FoodOrderingApp/service/dao/PaymentDao.class
 com/upgrad/FoodOrderingApp/service/dao/RestaurantDao.class
 com/upgrad/FoodOrderingApp/service/dao/OrderDao.class
 com/upgrad/FoodOrderingApp/service/businness/CustomerService.class

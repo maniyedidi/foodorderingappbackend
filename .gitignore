@@ -159,6 +159,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-/FoodOrderingApp-db/target/
-/FoodOrderingApp-api/target/
 /FoodOrderingApp-service/target/
+/FoodOrderingApp-api/target/
+/FoodOrderingApp-db/target/
