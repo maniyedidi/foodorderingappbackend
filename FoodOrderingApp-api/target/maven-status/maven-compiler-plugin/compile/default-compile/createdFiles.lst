@@ -15,6 +15,7 @@ com/upgrad/FoodOrderingApp/api/model/AddressList.class
 com/upgrad/FoodOrderingApp/api/model/ItemList$ItemTypeEnum.class
 com/upgrad/FoodOrderingApp/api/model/CustomerOrderResponse.class
 com/upgrad/FoodOrderingApp/api/model/ItemQuantityResponseItem$TypeEnum.class
+com/upgrad/FoodOrderingApp/api/controller/PaymentController.class
 com/upgrad/FoodOrderingApp/api/model/CouponDetailsResponse.class
 com/upgrad/FoodOrderingApp/api/model/SaveAddressRequest.class
 com/upgrad/FoodOrderingApp/api/model/OrderList.class
