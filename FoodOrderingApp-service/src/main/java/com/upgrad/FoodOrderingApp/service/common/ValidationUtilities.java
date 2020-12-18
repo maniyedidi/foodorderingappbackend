@@ -57,9 +57,11 @@ public class ValidationUtilities {
     }
 
     public static boolean isValidCustomer(CustomerEntity customerEntity) {
-        if (customerEntity.getFirstName() != null && customerEntity.getContactNumber() != null && customerEntity.getEmailAddress() != null && customerEntity.getPassword() != null) {
-            return true;
+        if (customerEntity.getFirstName() == null || customerEntity.getContactNumber() == null || customerEntity.getEmailAddress() == null || customerEntity.getPassword() == null) {
+            return false;
+        } else if (customerEntity.getFirstName().equals("") || customerEntity.getContactNumber().equals("") || customerEntity.getEmailAddress().equals("") || customerEntity.getPassword().equals("")) {
+            return false;
         }
-        return false;
+        return true;
     }
 }
