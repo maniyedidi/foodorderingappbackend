@@ -1,6 +1,5 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
-import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
 import com.upgrad.FoodOrderingApp.service.entity.ItemEntity;
 import org.springframework.stereotype.Repository;
 
@@ -8,29 +7,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+//ItemDao class provides the database access to all the endpoints under item controller
+
 @Repository
 public class ItemDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public ItemEntity getItemById(final Integer itemId) {
+    /* Method to fetch item object based on item UUID*/
+    public ItemEntity getItemByUUID(String uuid) {
         try {
-            return entityManager.createNamedQuery("itemById", ItemEntity.class).setParameter("id", itemId)
-                    .getSingleResult();
+            return entityManager.createNamedQuery("itemByUUID", ItemEntity.class).setParameter("uuid", uuid).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
     }
-
-    public ItemEntity getItemByUuid(final String itemUuid) {
-        try {
-            return entityManager.createNamedQuery("itemByUuid", ItemEntity.class).setParameter("uuid", itemUuid)
-                    .getSingleResult();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
-
-
 }
