@@ -3,11 +3,9 @@ package com.upgrad.FoodOrderingApp.service.businness;
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.dao.CustomerAddressDao;
 //import com.upgrad.FoodOrderingApp.service.dao.OrderDao;
+import com.upgrad.FoodOrderingApp.service.dao.OrderDao;
 import com.upgrad.FoodOrderingApp.service.dao.StateDao;
-import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CustomerAddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
-import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
+import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
@@ -29,6 +27,9 @@ public class AddressService {
 
     @Autowired
     private StateDao stateDao;
+
+    @Autowired
+    private OrderDao ordersDao;
 
 
     /* business logic to save address*/
@@ -100,10 +101,10 @@ public class AddressService {
     /* Deletes the address entity only if orders on that address from past are null or 0 else will set the address as inactive*/
     @Transactional(propagation = Propagation.REQUIRED)
     public AddressEntity deleteAddress(AddressEntity addressEntity) {
-//        List<OrderEntity> ordersEntityList = ordersDao.getOrdersByAddress(addressEntity);
-//        if (ordersEntityList == null || ordersEntityList.isEmpty()) {
-//            return addressDao.deleteAddressEntity(addressEntity);
-//        }
+        List<OrderEntity> ordersEntityList = ordersDao.getOrdersByAddress(addressEntity);
+        if (ordersEntityList == null || ordersEntityList.isEmpty()) {
+            return addressDao.deleteAddressEntity(addressEntity);
+        }
 
         addressEntity.setActive(0);
         return addressDao.updateAddressEntity(addressEntity);
